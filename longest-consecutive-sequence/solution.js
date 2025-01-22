@@ -1,36 +1,26 @@
-import { numsort } from "../numsort.js";
-
 class Solution {
     /**
      * @param {number[]} nums
      * @return {number}
      */
     longestConsecutive(nums) {
-        let sortedNums = nums;
-        numsort(sortedNums);
+        let longest = 0, len = 0;
+        let numsSet = new Set(nums);
 
-        let number = undefined;
-        let i = 0, longest = 0, len = 0;
-        while(sortedNums[i] !== undefined) {
-            if(number == undefined) {
-                number = sortedNums[i];
-                len++;
-                if(len > longest)
-                    longest = len;
-            } else if(sortedNums[i] == number) {
-                
-            } else if(sortedNums[i] == number + 1) {
-                number++;
-                len++;
-                if(len > longest)
-                    longest = len;
+        for (const n of numsSet) {
+            if(numsSet.has(n - 1)) {
+                len = 0;
             } else {
-                number = sortedNums[i];
                 len = 1;
+                while(numsSet.has(n + len)) {
+                    len++;
+                }
+                if(longest < len)
+                    longest = len;
             }
-            i++;
+            
         }
-        
+
         return longest;
     }
 }
