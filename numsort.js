@@ -60,5 +60,7 @@ function dualPivotQuicksort(nums, low, high) {
  * @param {number[]} nums
  */
 function numsort(nums) {
-    dualPivotQuicksort(nums, 0, nums.length - 1);
+    let ret = nums;
+    dualPivotQuicksort(ret, 0, ret.length - 1);
+    return ret;
 }

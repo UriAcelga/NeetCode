@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3Sum</title>
+</head>
+<body>
+    <h1>3Sum</h1>
+    <button onclick="test()">Probar</button>
+</body>
+<script src="../numsort.js"></script>
+<script src="solution.js"></script>
+<script>
+    let nums = [-1,0,1,2,-1,-4,-1,-1];
+    let nums2 = [0,1,1];
+    let nums3 = [0,0,0];
+    let s = new Solution();
+
+    function test() {
+        console.log(nums)
+        console.log(s.threeSum(nums));
+        console.log(nums2)
+        console.log(s.threeSum(nums2));
+        console.log(nums3)
+        console.log(s.threeSum(nums3));
+
+    }
+</script>
+</html>
