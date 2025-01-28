@@ -19,15 +19,15 @@ class Solution {
      * @return {number}
      */
     maxArea(heights) {
-        let menor, distancia, maxContainer = 0;
-        for(let i = 0; i < heights.length - 1; i++) {
-            for (let j = i + 1; j < heights.length; j++) {
-                menor = (heights[i] < heights[j]) ? heights[i] : heights[j];
-                distancia = j - i;
-                maxContainer = (menor * distancia > maxContainer) ? menor * distancia : maxContainer;
-                    
-                
-            }
+        let menorExtremo, maxContainer = 0;
+        for(let i = 0, j = heights.length - 1; i < j;) {
+            menorExtremo = (heights[i] < heights[j]) ? heights[i] : heights[j];
+            maxContainer = menorExtremo * (j - i) > maxContainer ? menorExtremo * (j - i) : maxContainer;
+
+            if(heights[i] < heights[j])
+                i++;
+            else
+                j--;
         }
         return maxContainer;
     }
