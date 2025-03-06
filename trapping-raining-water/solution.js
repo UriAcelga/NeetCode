@@ -4,26 +4,27 @@ class Solution {
      * @return {number}
      */
     trap(height) {
-        let max = 0;
         let L = 0, R = height.length - 1;
+        let maxL = 0, maxR = 0;
         let agua = 0;
-        for (let i = 0; i < height.length; i++) {
-            if(height[i] > height[max])
-                max = i;
-        }
-        for (let i = 0, j = height.length - 1; i < max || j > max; i++, j--) {
-            if(i < max) {
-                if(height[i] < height[L]) 
-                    agua += ((height[L] - height[i]) > 0) ? height[L] - height[i] : 0;
-                else 
-                    L = i;
+        
+        while(L <= R) {
+            if(maxL <= maxR) {
+                if(maxL > height[L]) {
+                    agua += maxL - height[L]; 
+                } else {
+                    maxL = height[L];
+                }
+
+                L++;
             }
-            
-            if(j > max) {
-                if(height[j] < height[R])
-                    agua += ((height[R] - height[j]) > 0) ? height[R] - height[j] : 0;
-                else
-                    R = j;
+            else {
+                if(maxR > height[R]) {
+                    agua += maxR - height[R]; 
+                } else {
+                    maxR = height[R];
+                }
+                R--;
             }
         }
         return agua;
